@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "@fontsource/dm-sans";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import About from "./About";
+import Header from "./Header";
+
+const fontTheme = createTheme({
+  palette: {
+    background: {
+      default: "#f3f3f3"
+    }
+  },
+  typography: {
+    allVariants: {
+      fontFamily: "DM Sans, sans-serif"
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={fontTheme}>
+        <Header />
+        <About />
+    </ThemeProvider>
   );
 }
 
