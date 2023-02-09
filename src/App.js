@@ -1,9 +1,12 @@
 import "@fontsource/dm-sans";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Intro from "./Intro";
+
 import Header from "./Header";
-import Footer from "./Footer";
+import Intro from "./Intro";
 import About from "./About";
+import Skills from "./Skills";
+import Footer from "./Footer";
+
 
 const fontTheme = createTheme({
   custom: {
@@ -27,6 +30,14 @@ const fontTheme = createTheme({
       defaultProps: {
         maxWidth: "lg"
       }
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          borderWidth: "1px",
+          borderColor: "black"
+        }
+      }
     }
   }
 });
@@ -37,6 +48,7 @@ function App() {
         <Header />
         <Intro />
         <About />
+        <Skills />
         <Footer />
     </ThemeProvider>
   );

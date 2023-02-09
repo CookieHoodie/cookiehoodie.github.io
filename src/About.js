@@ -42,12 +42,13 @@ function About() {
             justifyContent={{ xs: "center", md: "right" }}
             order={{ xs: 1, md: 2 }}
           >
-            <Card sx={{ px: 1.5, paddingTop: 1.5, paddingBottom: 8 }}>
+            {/* <Card sx={{ px: 1.5, paddingTop: 1.5, paddingBottom: 8 }}> */}
+            <Card sx={{ p: 1.5 }}>
               <CardMedia
                 component="img"
                 image="portrait.jpg"
                 alt="Portrait"
-                sx={{ maxWidth: 350 }}
+                sx={{ maxWidth: {sm: 350, lg: 280} }}
               />
             </Card>
           </Grid>
