@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/system";
+import BackgroundBox from "./BackgroundBox";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const name = "Chin Hang";
@@ -9,7 +9,7 @@ const description = "A Software Engineer who loves building products.";
 
 function Intro() {
   return (
-    <Box sx={{ bgcolor: "background.default", padding: (theme) => theme.custom.outerPadding }}>
+    <BackgroundBox>
       <Container>
         <Grid
           container
@@ -31,9 +31,11 @@ function Intro() {
             </Typography>
           </Grid>
         </Grid>
-        <ArrowDownwardIcon sx={{ paddingTop: { xs: 8, sm: 0 }, fontSize: 50 }} />
+        <ArrowDownwardIcon
+          sx={{ paddingTop: { xs: 8, sm: 0 }, fontSize: 50 }}
+        />
       </Container>
-    </Box>
+    </BackgroundBox>
   );
 }
 

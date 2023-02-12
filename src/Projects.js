@@ -7,6 +7,18 @@ import CardMedia from "@mui/material/CardMedia";
 import Divider from "@mui/material/Divider";
 import LaunchIcon from "@mui/icons-material/Launch";
 import IconButton from "@mui/material/IconButton";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import CloseIcon from "@mui/icons-material/Close";
+import Tooltip from "@mui/material/Tooltip";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import BackgroundBox from "./BackgroundBox";
+import { CardActionArea } from "@mui/material";
+import { useState } from "react";
 
 const projects = [
   {
@@ -16,6 +28,13 @@ const projects = [
     technologies: "Express.js, MongoDB, Docker, Google Cloud, Github CI/CD",
     projectUrl: "https://github.com/CookieHoodie/collab-coding",
     imageUrl: "projects/peerprep/4.png",
+    gallery: [
+      { imageUrl: "projects/peerprep/1.png" },
+      { imageUrl: "projects/peerprep/2.png" },
+      { imageUrl: "projects/peerprep/3.png" },
+      { imageUrl: "projects/peerprep/4.png" },
+      { imageUrl: "projects/peerprep/5.png" },
+    ],
   },
   {
     title: "Augmented Reality App",
@@ -24,6 +43,7 @@ const projects = [
     technologies: "C#, C++, Unity, OpenCV, AI, MRTK",
     projectUrl: "",
     imageUrl: "projects/nreal/1.jpg",
+    gallery: [{ imageUrl: "projects/nreal/1.jpg" }],
   },
   {
     title: "Game Bot",
@@ -32,6 +52,7 @@ const projects = [
     technologies: "C++, Windows API",
     projectUrl: "https://github.com/CookieHoodie/OsuBot",
     imageUrl: "projects/osubot/1.png",
+    gallery: [{ imageUrl: "projects/osubot/1.png" }],
   },
   {
     title: "MP3 Player",
@@ -40,6 +61,7 @@ const projects = [
     technologies: "JavaFX, SQLite3",
     projectUrl: "https://cookiehoodie.github.io/osu-songs-collector/",
     imageUrl: "projects/mp3/1.png",
+    gallery: [{ imageUrl: "projects/mp3/1.png" }],
   },
   {
     title: "Smart Robot Car",
@@ -48,21 +70,77 @@ const projects = [
     technologies: "Android, Python, Raspberry Pi",
     projectUrl: "https://bitbucket.org/hcwk/rpi_car/src/master/",
     imageUrl: "projects/car/1.jpg",
+    gallery: [{ imageUrl: "projects/car/1.jpg" }],
   },
 ];
 
 function Projects() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalData, setModalData] = useState({ gallery: [] }); // init so that map in dialog doesn't complain
+
+  const handleOpen = () => {
+    setModalIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setModalIsOpen(false);
+  };
+
   return (
-    <Box
-      sx={{
-        bgcolor: "background.default",
-        padding: (theme) => theme.custom.outerPadding,
-      }}
-    >
+    <BackgroundBox>
       <Container>
         <Typography variant="h2" sx={{ marginBottom: 8 }}>
           Projects
         </Typography>
+
+        {/* Shared dialog for all projects, just the data differs */}
+        <Dialog
+          open={modalIsOpen}
+          onClose={handleClose}
+          fullWidth
+          maxWidth="xl" // the width size
+          aria-labelledby="gallery-title"
+          PaperProps={{ sx: { height: "100%" } }} // full height modal
+        >
+          <DialogTitle
+            id="gallery-title"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: "text.grey",
+            }}
+          >
+            <CollectionsIcon sx={{ marginRight: 1 }} />
+            <Typography sx={{ fontSize: "1.8rem", flexGrow: 1 }}>
+              Gallery
+            </Typography>
+            <IconButton
+              aria-label="close"
+              onClick={handleClose}
+              sx={{
+                justifyContent: "flex-end",
+                color: "text.grey",
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
+          <DialogContent>
+            <ImageList variant="masonry" cols={2} gap={30}>
+              {modalData.gallery.map((item) => (
+                <ImageListItem key={item.imageUrl}>
+                  <img
+                    src={`${item.imageUrl}`}
+                    srcSet={`${item.imageUrl}`}
+                    alt={item.imageUrl}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          </DialogContent>
+        </Dialog>
+
         {projects.map((project) => (
           <Box key={project.title}>
             <Grid
@@ -109,16 +187,27 @@ function Projects() {
                   </Typography>
                 </Box>
                 <Box sx={{ marginTop: 5 }}>
-                  <IconButton
-                    color="primary"
-                    href={project.projectUrl}
-                    target="_blank"
-                    rel="noopener"  // security purpose
-                    sx={{ padding: 0 }}  // to align perfectly with the text
-                    disabled={project.projectUrl ? false : true}  // disable the button for project without url
+                  <Tooltip
+                    title={
+                      project.projectUrl
+                        ? "Project website"
+                        : "Project website not available"
+                    }
                   >
-                    <LaunchIcon />
-                  </IconButton>
+                    <span>
+                      {/* Needed for disabled state of button or tooltip will complaint */}
+                      <IconButton
+                        color="primary"
+                        href={project.projectUrl}
+                        target="_blank"
+                        rel="noopener" // security purpose
+                        sx={{ padding: 0 }} // to align perfectly with the text
+                        disabled={project.projectUrl ? false : true} // disable the button for project without url
+                      >
+                        <LaunchIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
                 </Box>
               </Grid>
               <Grid
@@ -130,14 +219,52 @@ function Projects() {
                 order={{ xs: 1, md: 2 }}
                 sx={{ marginBottom: { xs: 5, md: 0 } }} // when small screen, spacing between image and words
               >
-                <Card sx={{ display: "flex", justifyContent: "center" }}>
-                  {/* If img doesn't fit, it is vertically centered */}
-                  <CardMedia
-                    component="img"
-                    image={project.imageUrl}
-                    alt={project.imageUrl}
-                  />
-                </Card>
+                <Tooltip
+                  enterDelay={200}
+                  enterNextDelay={200}
+                  title={
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center", // vertically center the icon and text
+                        fontSize: 13, // size of both text and icon
+                      }}
+                    >
+                      <Typography>More photos</Typography>
+                      {/* spacing between icon and text */}
+                      <ArrowOutwardIcon sx={{ ml: 1 }} />
+                    </Box>
+                  }
+                  followCursor
+                >
+                  <CardActionArea
+                    onClick={() => {
+                      setModalData(project);
+                      handleOpen();
+                    }}
+                    // make hover effect more pronounced
+                    sx={{
+                      "&:hover .MuiCardActionArea-focusHighlight": {
+                        opacity: 0.2,
+                      },
+                    }}
+                  >
+                    <Card
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        height: "100%", // otherwise when hover, there would be overflow vertical space
+                      }}
+                    >
+                      {/* If img doesn't fit, it is vertically centered */}
+                      <CardMedia
+                        component="img"
+                        image={project.imageUrl}
+                        alt={project.imageUrl}
+                      />
+                    </Card>
+                  </CardActionArea>
+                </Tooltip>
               </Grid>
             </Grid>
             {/* Light divider on small screens to avoid project confusion */}
@@ -145,7 +272,7 @@ function Projects() {
           </Box>
         ))}
       </Container>
-    </Box>
+    </BackgroundBox>
   );
 }
 

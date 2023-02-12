@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/system";
+import BackgroundBox from "./BackgroundBox";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 
@@ -13,12 +13,7 @@ Outside of work, I study stock market. I read news every day to get up-to-date w
 
 function About() {
   return (
-    <Box
-      sx={{
-        bgcolor: "background.default",
-        padding: (theme) => theme.custom.outerPadding,
-      }}
-    >
+    <BackgroundBox>
       <Container>
         <Grid container spacing={6} sx={{ minHeight: 400 }}>
           {/* Put photo on top when on small screen */}
@@ -54,7 +49,7 @@ function About() {
           </Grid>
         </Grid>
       </Container>
-    </Box>
+    </BackgroundBox>
   );
 }
 
