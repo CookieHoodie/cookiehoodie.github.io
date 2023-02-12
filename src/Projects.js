@@ -15,7 +15,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import CloseIcon from "@mui/icons-material/Close";
 import Tooltip from "@mui/material/Tooltip";
 import CollectionsIcon from "@mui/icons-material/Collections";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import NorthEastIcon from '@mui/icons-material/NorthEast';
 import BackgroundBox from "./BackgroundBox";
 import { CardActionArea } from "@mui/material";
 import { useState } from "react";
@@ -29,11 +29,11 @@ const projects = [
     projectUrl: "https://github.com/CookieHoodie/collab-coding",
     imageUrl: "projects/peerprep/4.png",
     gallery: [
-      { imageUrl: "projects/peerprep/1.png" },
-      { imageUrl: "projects/peerprep/2.png" },
-      { imageUrl: "projects/peerprep/3.png" },
-      { imageUrl: "projects/peerprep/4.png" },
-      { imageUrl: "projects/peerprep/5.png" },
+      { src: "img", url: "projects/peerprep/1.png" },
+      { src: "img", url: "projects/peerprep/2.png" },
+      { src: "img", url: "projects/peerprep/3.png" },
+      { src: "img", url: "projects/peerprep/4.png" },
+      { src: "img", url: "projects/peerprep/5.png" },
     ],
   },
   {
@@ -42,8 +42,12 @@ const projects = [
       "AR application that runs on NReal AR glasses. Does object tracking, face detection, dimension estimation, etc. in the 3D world.",
     technologies: "C#, C++, Unity, OpenCV, AI, MRTK",
     projectUrl: "",
-    imageUrl: "projects/nreal/1.jpg",
-    gallery: [{ imageUrl: "projects/nreal/1.jpg" }],
+    imageUrl: "projects/nreal/2.jpg",
+    gallery: [
+      { src: "img", url: "projects/nreal/1.jpg" },
+      { src: "video", url: "projects/nreal/aruco.mp4" },
+      { src: "video", url: "projects/nreal/anchor.mp4" },
+    ],
   },
   {
     title: "Game Bot",
@@ -52,7 +56,10 @@ const projects = [
     technologies: "C++, Windows API",
     projectUrl: "https://github.com/CookieHoodie/OsuBot",
     imageUrl: "projects/osubot/1.png",
-    gallery: [{ imageUrl: "projects/osubot/1.png" }],
+    gallery: [
+      { src: "video", url: "projects/osubot/demo1.mp4" },
+      { src: "video", url: "projects/osubot/demo2.mp4" },
+    ],
   },
   {
     title: "MP3 Player",
@@ -61,7 +68,13 @@ const projects = [
     technologies: "JavaFX, SQLite3",
     projectUrl: "https://cookiehoodie.github.io/osu-songs-collector/",
     imageUrl: "projects/mp3/1.png",
-    gallery: [{ imageUrl: "projects/mp3/1.png" }],
+    gallery: [
+      { src: "img", url: "projects/mp3/1.png" },
+      {
+        src: "img",
+        url: "projects/mp3/2.jpg",
+      },
+    ],
   },
   {
     title: "Smart Robot Car",
@@ -70,7 +83,10 @@ const projects = [
     technologies: "Android, Python, Raspberry Pi",
     projectUrl: "https://bitbucket.org/hcwk/rpi_car/src/master/",
     imageUrl: "projects/car/1.jpg",
-    gallery: [{ imageUrl: "projects/car/1.jpg" }],
+    gallery: [
+      { src: "img", url: "projects/car/2.jpg" },
+      { src: "img", url: "projects/car/3.jpg" },
+    ],
   },
 ];
 
@@ -128,12 +144,16 @@ function Projects() {
           <DialogContent>
             <ImageList variant="masonry" cols={2} gap={30}>
               {modalData.gallery.map((item) => (
-                <ImageListItem key={item.imageUrl}>
-                  <img
-                    src={`${item.imageUrl}`}
-                    srcSet={`${item.imageUrl}`}
-                    alt={item.imageUrl}
-                    loading="lazy"
+                <ImageListItem key={item.url}>
+                  <CardMedia
+                    component={item.src}
+                    src={item.url}
+                    alt={item.url}
+                    // for videos
+                    autoPlay
+                    controls
+                    muted
+                    sx={{ maxHeight: 800 }}
                   />
                 </ImageListItem>
               ))}
@@ -230,9 +250,8 @@ function Projects() {
                         fontSize: 13, // size of both text and icon
                       }}
                     >
-                      <Typography>More photos</Typography>
-                      {/* spacing between icon and text */}
-                      <ArrowOutwardIcon sx={{ ml: 1 }} />
+                      <Typography>Gallery</Typography>
+                      <NorthEastIcon fontSize="small"/>
                     </Box>
                   }
                   followCursor
