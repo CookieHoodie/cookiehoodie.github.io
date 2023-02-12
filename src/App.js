@@ -5,6 +5,7 @@ import Header from "./Header";
 import Intro from "./Intro";
 import About from "./About";
 import Skills from "./Skills";
+import Projects from "./Projects";
 import Footer from "./Footer";
 
 
@@ -32,12 +33,24 @@ const fontTheme = createTheme({
       }
     },
     MuiDivider: {
-      styleOverrides: {
-        root: {
-          borderWidth: "1px",
-          borderColor: "black"
+      variants: [
+        {
+          props: { variant: 'thick'},
+          style: {
+            borderWidth: "1px",
+            borderColor: "black"
+          },
         }
-      }
+      ],
+      defaultProps: {
+        variant: 'thick',
+      },
+      // styleOverrides: {
+      //   root: {
+      //     borderWidth: "1px",
+      //     borderColor: "black"
+      //   }
+      // }
     }
   }
 });
@@ -49,6 +62,7 @@ function App() {
         <Intro />
         <About />
         <Skills />
+        <Projects />
         <Footer />
     </ThemeProvider>
   );

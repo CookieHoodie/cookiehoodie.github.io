@@ -8,7 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 const description = `
 My work mainly focuses on software development. I love to build solutions that could change the way we work, and at the same time I put strong emphasis on building good software. This means having great maintainability, extensibility, scalability, etc.
 
-Outside of work, I love studying stock market. I read news every day to get up-to-date with the latest situation, and I do financial planning from time to time so as to stick to my goals.
+Outside of work, I study stock market. I read news every day to get up-to-date with the latest information, and I do financial planning from time to time to achieve my goals.
 `;
 
 function About() {
@@ -43,12 +43,12 @@ function About() {
             order={{ xs: 1, md: 2 }}
           >
             {/* <Card sx={{ px: 1.5, paddingTop: 1.5, paddingBottom: 8 }}> */}
-            <Card sx={{ p: 1.5 }}>
+            <Card variant="outline">
               <CardMedia
                 component="img"
                 image="portrait.jpg"
                 alt="Portrait"
-                sx={{ maxWidth: {sm: 350, lg: 280} }}
+                sx={{ maxWidth: { sm: 350, lg: 280 } }}
               />
             </Card>
           </Grid>

@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/system";
-
 import Divider from '@mui/material/Divider';
 
 const skills = [
@@ -27,7 +26,8 @@ function Skills() {
             <Grid item xs={12} sm={3}>
               <Typography
                 variant="h6"
-                sx={{ textDecoration: "underline", textUnderlineOffset: 3 }}
+                // sx={{ textDecoration: "underline", textUnderlineOffset: 3 }}
+                sx={{ fontWeight: "bold", textUnderlineOffset: 3 }}
               >
                 {skill.title}
               </Typography>
@@ -38,7 +38,7 @@ function Skills() {
             </Grid>
           </Grid>
         ))}
-        <Divider sx={{mt: 15}} />
+        <Divider sx={{mt: 15, mb: 3}} />
       </Container>
     </Box>
   );
