@@ -10,13 +10,13 @@ import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import CloseIcon from "@mui/icons-material/Close";
 import Tooltip from "@mui/material/Tooltip";
 import CollectionsIcon from "@mui/icons-material/Collections";
-import NorthEastIcon from '@mui/icons-material/NorthEast';
+import NorthEastIcon from "@mui/icons-material/NorthEast";
 import BackgroundBox from "./BackgroundBox";
+import Masonry from "@mui/lab/Masonry";
 import { CardActionArea } from "@mui/material";
 import { useState } from "react";
 
@@ -45,8 +45,8 @@ const projects = [
     imageUrl: "projects/nreal/2.jpg",
     gallery: [
       { src: "img", url: "projects/nreal/1.jpg" },
-      { src: "video", url: "projects/nreal/aruco.mp4" },
       { src: "video", url: "projects/nreal/anchor.mp4" },
+      { src: "video", url: "projects/nreal/aruco.mp4" },
     ],
   },
   {
@@ -103,7 +103,7 @@ function Projects() {
   };
 
   return (
-    <BackgroundBox>
+    <BackgroundBox id="projects">
       <Container>
         <Typography variant="h2" sx={{ marginBottom: 8 }}>
           Projects
@@ -142,7 +142,7 @@ function Projects() {
             </IconButton>
           </DialogTitle>
           <DialogContent>
-            <ImageList variant="masonry" cols={2} gap={30}>
+            <Masonry columns={{ xs: 1, md: 2 }} spacing={3}>
               {modalData.gallery.map((item) => (
                 <ImageListItem key={item.url}>
                   <CardMedia
@@ -153,11 +153,11 @@ function Projects() {
                     autoPlay
                     controls
                     muted
-                    sx={{ maxHeight: 800 }}
+                    sx={{ maxHeight: 700 }} // to avoid awkward size
                   />
                 </ImageListItem>
               ))}
-            </ImageList>
+            </Masonry>
           </DialogContent>
         </Dialog>
 
@@ -251,7 +251,7 @@ function Projects() {
                       }}
                     >
                       <Typography>Gallery</Typography>
-                      <NorthEastIcon fontSize="small"/>
+                      <NorthEastIcon fontSize="small" />
                     </Box>
                   }
                   followCursor
@@ -286,10 +286,11 @@ function Projects() {
                 </Tooltip>
               </Grid>
             </Grid>
-            {/* Light divider on small screens to avoid project confusion */}
+            {/* Default (light) divider on small screens to avoid project confusion */}
             <Divider variant="" sx={{ display: { md: "none" }, my: 8 }} />
           </Box>
         ))}
+        <Divider sx={{ mt: 15, mb: 2 }} />
       </Container>
     </BackgroundBox>
   );

@@ -6,12 +6,14 @@ import Intro from "./Intro";
 import About from "./About";
 import Skills from "./Skills";
 import Projects from "./Projects";
+import Contact from "./Contact";
 import Footer from "./Footer";
 
 // background-image: linear-gradient(315deg, rgb(217, 228, 245) 0%, rgb(245, 227, 230) 74%);
 // background-attachment: fixed;
 
-const fontTheme = createTheme({
+// global theme
+const simpleTheme = createTheme({
   custom: {
     outerPadding: 4,
   },
@@ -54,12 +56,13 @@ const fontTheme = createTheme({
 function App() {
 
   return (
-    <ThemeProvider theme={fontTheme}>
+    <ThemeProvider theme={simpleTheme}>
       <Header />
       <Intro />
       <About />
       <Skills />
       <Projects />
+      <Contact />
       <Footer />
     </ThemeProvider>
   );

@@ -13,7 +13,7 @@ Outside of work, I study stock market. I read news every day to get up-to-date w
 
 function About() {
   return (
-    <BackgroundBox>
+    <BackgroundBox id="about">
       <Container>
         <Grid container spacing={6} sx={{ minHeight: 400 }}>
           {/* Put photo on top when on small screen */}

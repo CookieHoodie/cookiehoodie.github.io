@@ -11,7 +11,7 @@ import { Container } from "@mui/system";
 import { Menu, MenuItem } from "@mui/material";
 
 const brand = "ch.";
-const pages = ["About", "Experience", "Contact"];
+const pages = ["About", "Projects", "Contact"];
 
 const AppBarButton = styled(Button)`
   font-weight: bold;
@@ -37,7 +37,10 @@ function Header() {
       color="default"
       position="static"
       elevation={0}
-      sx={{ bgcolor: "background.default", padding: (theme) => theme.custom.outerPadding }}
+      sx={{
+        bgcolor: "background.default",
+        padding: (theme) => theme.custom.outerPadding,
+      }}
     >
       <Container>
         <Toolbar disableGutters>
@@ -63,6 +66,7 @@ function Header() {
             {pages.map((page) => (
               <AppBarButton
                 key={page}
+                href={`#${page.toLowerCase()}`}
                 onClick={handleCloseNavMenu}
                 sx={{ color: "inherit" }}
               >
@@ -104,7 +108,11 @@ function Header() {
               onClose={handleCloseNavMenu}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem component="button"
+                  key={page}
+                  href={`#${page.toLowerCase()}`}
+                  onClick={handleCloseNavMenu}
+                >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
