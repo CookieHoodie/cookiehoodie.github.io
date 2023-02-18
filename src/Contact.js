@@ -5,6 +5,8 @@ import Link from "@mui/material/Link";
 import { Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
+const blogUrl = "https://cookiehoodie.github.io/blog/"
+
 function Contact() {
   return (
     <BackgroundBox id="contact" sx={{ pb: 10 }}>
@@ -20,8 +22,8 @@ function Contact() {
                 alignItems: "center",
               }}
             >
-              Read my <Link target="_blank">blogs (coming soon)</Link>
-              <ArrowForwardIcon fontSize="large" sx={{ ml: 2 }} />
+              Read my <Link href={blogUrl}>blog</Link>
+              <ArrowForwardIcon fontSize="medium" sx={{ ml: 2 }} />
             </Typography>
           </Grid>
         </Grid>
