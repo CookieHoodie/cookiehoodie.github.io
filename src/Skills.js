@@ -9,7 +9,7 @@ const skills = [
   {
     title: "Main Tools",
     details:
-      "Node.js, React, Kafka, Redis, Docker, MongoDB, PostgreSQL, Google Cloud",
+      "Node.js, React, Kafka, Redis, Docker, MongoDB, PostgreSQL, Google Cloud, Hadoop",
   },
 ];
 
