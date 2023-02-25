@@ -1,10 +1,13 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
 import { Container } from "@mui/system";
 import BackgroundBox from "./BackgroundBox";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const name = "Chin Hang";
+const intro = `Hello, I'm
+${name}.`;
 const description = "A Software Engineer who loves building products.";
 
 function Intro() {
@@ -17,9 +20,11 @@ function Intro() {
           sx={{ minHeight: 400, alignItems: "center" }}
         >
           <Grid item xs={12} sm={6}>
-            <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-              Hello, I'm <br />
-              {name}.
+            <Typography
+              variant="h2"
+              sx={{ fontWeight: "bold", whiteSpace: "pre-line" }}
+            >
+              {intro}
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -31,9 +36,13 @@ function Intro() {
             </Typography>
           </Grid>
         </Grid>
-        <ArrowDownwardIcon
-          sx={{ paddingTop: { xs: 8, sm: 0 }, fontSize: 50 }}
-        />
+        {/* 0 padding to align left, margintop when small screen for spacing */}
+        <IconButton
+          href="#about"
+          sx={{ padding: 0, marginTop: { xs: 8, sm: 0 }, color: "inherit" }}
+        >
+          <ArrowDownwardIcon sx={{ fontSize: 50 }} />
+        </IconButton>
       </Container>
     </BackgroundBox>
   );
