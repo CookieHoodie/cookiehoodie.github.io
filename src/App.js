@@ -32,11 +32,11 @@ const simpleTheme = createTheme({
     },
   },
   components: {
-    // for whole html
+    // for global
     MuiCssBaseline: {
       styleOverrides: {
         html: {
-          scrollBehavior: "smooth"  // smooth scroll to sections
+          scrollBehavior: "smooth", // smooth scroll to sections
         },
       },
     },
@@ -66,13 +66,13 @@ function App() {
   return (
     <ThemeProvider theme={simpleTheme}>
       <CssBaseline />
-        <Header />
-        <Intro />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-        <Footer />
+      <Header />
+      <Intro />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+      <Footer />
     </ThemeProvider>
   );
 }

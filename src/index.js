@@ -1,15 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import GlobalStyles from '@mui/material/GlobalStyles';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const rootStyle = <GlobalStyles styles={{ body: {margin: 0}}} />
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {rootStyle}
     <App />
   </React.StrictMode>
 );
