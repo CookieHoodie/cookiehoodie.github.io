@@ -1,22 +1,13 @@
-# Portfolio Website
-
-A portfolio website created using React for Github Pages.
+# Portfolio👨‍💻
+This is my portfolio site created using React and Next.js, hosted on GitHub Pages. Next.js is used for the purpose of static site generation. 
 
 
 # Running Locally
-
 ```sh
 $ npm -i
-$ npm start
+$ npm run dev
 ```
 
+# Deploy to GitHub Pages
+GitHub Action is used to deploy the site to GitHub Pages whenever the code is pushed to `main`. Refer to `.github/workflows/gh-pages.yml` for more details.
 
-# Deploy to Github Pages
-
-[gh-pages package](https://github.com/tschaub/gh-pages) is used for deployment. The following command builds and pushes the generated site to `gh-pages` branch on Github:
-
-```sh
-$ npm run deploy -- -m "Commit message"
-```
-
-Then, go to `Settings` on the repository and choose `gh-pages` and `root` as the branch to publish to Github Pages. More details could be found [here](https://github.com/gitname/react-gh-pages).
