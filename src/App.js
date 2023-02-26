@@ -1,5 +1,6 @@
 import "@fontsource/dm-sans";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import Header from "./Header";
 import Intro from "./Intro";
@@ -31,6 +32,14 @@ const simpleTheme = createTheme({
     },
   },
   components: {
+    // for whole html
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: {
+          scrollBehavior: "smooth"  // smooth scroll to sections
+        },
+      },
+    },
     MuiContainer: {
       defaultProps: {
         maxWidth: "lg",
@@ -54,16 +63,16 @@ const simpleTheme = createTheme({
 });
 
 function App() {
-
   return (
     <ThemeProvider theme={simpleTheme}>
-      <Header />
-      <Intro />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
+      <CssBaseline />
+        <Header />
+        <Intro />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
     </ThemeProvider>
   );
 }
