@@ -290,7 +290,7 @@ function Projects() {
             <Divider variant="" sx={{ display: { md: "none" }, my: 8 }} />
           </Box>
         ))}
-        <Divider sx={{ mt: 15, mb: 2 }} />
+        <Divider sx={{ mt: {xs: 0, md: 15}, mb: 2 }} />
       </Container>
     </BackgroundBox>
   );

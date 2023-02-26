@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import { Container } from "@mui/system";
@@ -6,8 +7,15 @@ import BackgroundBox from "./BackgroundBox";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const name = "Chin Hang";
-const intro = `Hello, I'm
-${name}.`;
+const intro = (
+  <>
+    Hello, I'm
+    <br/>
+    <Box component="span" sx={{ color: "cadetblue" }}>
+      {name}.
+    </Box>
+  </>
+);
 const description = "A Software Engineer who loves building products.";
 
 function Intro() {
@@ -22,7 +30,7 @@ function Intro() {
           <Grid item xs={12} sm={6}>
             <Typography
               variant="h2"
-              sx={{ fontWeight: "bold", whiteSpace: "pre-line" }}
+              sx={{ fontWeight: "bold" }}
             >
               {intro}
             </Typography>
