@@ -22,7 +22,7 @@ function Contact() {
                 alignItems: "center",
               }}
             >
-              Read my <Link href={blogUrl}>blog</Link>
+              Check out my <Link href={blogUrl}>blog</Link>
               <ArrowForwardIcon fontSize="medium" sx={{ ml: 2 }} />
             </Typography>
           </Grid>
