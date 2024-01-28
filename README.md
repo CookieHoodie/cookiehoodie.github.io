@@ -4,7 +4,7 @@ This is my portfolio site created using React and Next.js, hosted on GitHub Page
 
 # Running Locally
 ```sh
-$ npm -i
+$ npm i
 $ npm run dev
 ```
 
