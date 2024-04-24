@@ -5,7 +5,7 @@ import { Container } from "@mui/system";
 import Divider from "@mui/material/Divider";
 
 const skills = [
-  { title: "Languages", details: "Python, Ruby, Golang, SQL, JavaScript" },
+  { title: "Languages", details: "Python, Ruby, Golang, SQL, Java, JavaScript" },
   {
     title: "Tools / Libraries",
     details:
